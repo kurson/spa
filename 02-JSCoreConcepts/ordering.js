@@ -7,7 +7,7 @@ const reverse = function(arr) {
 
 const sort = function(arr) {
     arrSorted = [];
-    // ...
+    
     return arrSorted;
 }
 
