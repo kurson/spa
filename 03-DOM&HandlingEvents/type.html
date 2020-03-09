@@ -20,11 +20,21 @@
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
-		<textarea rows="15" cols="50"></textarea><br>
+		<textarea rows="15" cols="50" oninput="startTimer(this)"></textarea><br>
 		
 		<script>
-			// a JavaScript code here ...
-			
+			var myTimeout = 0;
+			const startTimer = (elem) => {
+				console.log(myTimeout);
+				if(myTimeout === 0) {
+					myTimeout = setTimeout(() => {
+						results = document.createElement("p");
+						results.innerHTML = "Liczba znaków: " + elem.value.length
+							+ "\nLiczba słów: " + elem.value.split(" ").split("\n").length;
+						document.body.appendChild(results)
+					}, 3000)
+				}
+			}
 		</script>
 		
 	</body>
