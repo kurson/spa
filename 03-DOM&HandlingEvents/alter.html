@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="onDoubleClick(this)">
+		<h1 onclick="onTitleClick(this)">Another Brick in the Wall</h1>
+		<h3 onclick="onBandNameClick(this)">Pink Floyd</h3>
+		<p onclick="onLyricsClick(this)" oncopy="onLyricsCopy(this)">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,13 +15,41 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p style="visibility: hidden;" id="bandDescription" onclick="onBandDescClick(this)">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
+
 		<script>
-			// a JavaScript code here ...
-			
+// After clicking on the song title, the (Part 2) string is to be added at the end of the song title
+// • After clicking on the band name, the band description is to be displayed below the lyrics
+// • After clicking on the lyrics, the text is to be displayed in italics
+// • After double clicking on the page, the page background colour is to be changed to yellow
+// • When you try to copy the part of the lyrics, the copyright message is to be displayed in a popup window
+// • When you click on the visible band description, the band picture is to be displayed below the
+// description (https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg);
+// note: to display the band picture, create a JavaScript code to add an <img> element below the
+// description paragraph (see JavaScript HTML DOM Elements (Nodes), HTML DOM setAttribute()
+// Method)
+			const onTitleClick = (elem) => {
+				elem.innerHTML += " (Part 2)";
+			}
+			const onBandNameClick = (elem) => {
+				document.getElementById("bandDescription").style.visibility = "visible";
+			}
+			const onDoubleClick = (elem) => {
+				elem.style.backgroundColor = "yellow";
+			}
+			const onLyricsClick = (elem) => {
+				elem.style.fontStyle = "italic";
+			}
+			const onLyricsCopy = (elem) => {
+				window.alert("Don't copy this, copyright text here. ");
+			}
+			const onBandDescClick = (elem) => {
+				let image = document.createElement("img");
+				image.setAttribute("src", "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg");
+				document.body.appendChild(image);
+			}
 		</script>
 	</body>
 </html>
